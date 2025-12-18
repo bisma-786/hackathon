@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(if [ -d \"C:/Users/Bisma Gondal/Desktop/ai-driven-book/specs/main/checklists\" ])",
+      "Bash(then ls \"C:/Users/Bisma Gondal/Desktop/ai-driven-book/specs/main/checklists\")",
+      "Bash(else echo \"No checklists directory found\")",
+      "Bash(fi)",
+      "Bash(git fetch --all --prune)",
+      "Bash(powershell -Command \".specify/scripts/powershell/check-prerequisites.ps1 -Json\")",
+      "Bash(powershell -Command \".specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks\")",
+      "Bash(powershell -Command \".specify/scripts/powershell/setup-plan.ps1 -Json\")"
+    ]
+  }
+}

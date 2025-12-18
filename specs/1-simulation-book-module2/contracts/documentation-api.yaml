@@ -1,0 +1,139 @@
+openapi: 3.0.0
+info:
+  title: Simulation Book Module 2 - Documentation API
+  description: API specification for educational content structure in simulation environments module
+  version: 1.0.0
+servers:
+  - url: https://simulation-book.example.com/api/v1
+    description: Production server for simulation book content
+paths:
+  /modules/2/chapters:
+    get:
+      summary: Get all chapters in Module 2
+      description: Retrieve list of all chapters in the simulation environments module
+      responses:
+        '200':
+          description: List of chapters
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Chapter'
+  /modules/2/chapters/{chapterId}:
+    get:
+      summary: Get specific chapter content
+      description: Retrieve content for a specific chapter in Module 2
+      parameters:
+        - name: chapterId
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [gazebo-basics, unity-robotics, isaac-sim-transfer]
+          description: ID of the chapter to retrieve
+      responses:
+        '200':
+          description: Chapter content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chapter'
+        '404':
+          description: Chapter not found
+  /modules/2/exercises:
+    get:
+      summary: Get all exercises in Module 2
+      description: Retrieve list of all hands-on exercises in the simulation environments module
+      responses:
+        '200':
+          description: List of exercises
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Exercise'
+components:
+  schemas:
+    Chapter:
+      type: object
+      required:
+        - id
+        - title
+        - prerequisites
+        - objectives
+        - content
+        - exercises
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the chapter
+        title:
+          type: string
+          description: Display title of the chapter
+        prerequisites:
+          type: array
+          items:
+            type: string
+          description: Knowledge requirements before starting this chapter
+        objectives:
+          type: array
+          items:
+            type: string
+          description: Measurable learning outcomes
+        content:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentSection'
+        exercises:
+          type: array
+          items:
+            $ref: '#/components/schemas/Exercise'
+    ContentSection:
+      type: object
+      required:
+        - title
+        - content
+        - type
+      properties:
+        title:
+          type: string
+          description: Section title
+        content:
+          type: string
+          description: Markdown content of the section
+        type:
+          type: string
+          enum: [concept, example, exercise, reference]
+          description: Type of content section
+    Exercise:
+      type: object
+      required:
+        - id
+        - title
+        - description
+        - requirements
+        - expected_outcome
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the exercise
+        title:
+          type: string
+          description: Display title of the exercise
+        description:
+          type: string
+          description: Detailed description of the exercise
+        requirements:
+          type: array
+          items:
+            type: string
+          description: Software/hardware requirements for the exercise
+        expected_outcome:
+          type: string
+          description: What the user should achieve by completing the exercise
+        difficulty:
+          type: string
+          enum: [beginner, intermediate, advanced]
+          description: Difficulty level of the exercise
