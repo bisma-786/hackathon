@@ -6,25 +6,143 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
+  --ifm-color-primary: #0c0d0c;
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
   --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-light: #121111;
   --ifm-color-primary-lighter: #359962;
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: #1a8870;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary: #1a8870;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
   --ifm-color-primary-darkest: #1a8870;
   --ifm-color-primary-light: #29d5b0;
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --docusaurus-highlighted-code-line-bg: rgb(241, 234, 234);
+}
+.navbar__logo img {
+  height: 80px;
+  width: auto;
+  width:auto;
+  position: relative;
+  top: -15px;
+}
+/* ================================
+   NAVBAR HEIGHT FIX FOR LARGE LOGO
+================================ */
+
+.navbar {
+  min-height: 88px; /* adjust until overflow disappears */
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.footer{background: #000;}
+
+
+.navbar__inner {
+  align-items: center;
+ color: #e8eeeb;
+}
+.moduleSection {
+  padding: 4rem 0;
+}
+
+.moduleGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.moduleCard {
+  background: rgba(10, 10, 20, 0.6);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  backdrop-filter: blur(10px);
+}
+
+.moduleCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.25);
+}
+.imageWrapper {
+  width: 100%;
+  height: 180px;            /* CARD IMAGE HEIGHT */
+  overflow: hidden;
+}
+.cardContent {
+  padding: 1.25rem;
+
+}
+
+.cardContent h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardContent p {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  line-height: 1.4;
+
+
+}
+@media (max-width: 996px) {
+  .moduleGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .moduleGrid {
+    grid-template-columns: 1fr;
+  }
+}
+.splineContainer {
+  width: 100%;
+  height: 420px;
+ 
+}
+.splineContainer {
+  width: 100%;
+  height: 1000px;        /* increase from 420px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.splineContainer canvas {
+  outline: none;
+  border: none;
+}
+.navbar{background: #000000;}
+/* Navbar text color (default / not hovered) */
+
+/* 
+.navbar-items a{
+  color: #ffffff;
+} */
+
+.navbar a{
+  color: #ffffff;
+}
+.navbar a :hover{
+  color: #1a8870;
+}
+
+.footer a:hover{
+  color:#1a8870
+}
+.cardContent_WNyX{color:#ffffff}
+
+.navbar__link:hover {
+  color: #1a8870;
 }

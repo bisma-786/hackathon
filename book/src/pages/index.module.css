@@ -1,23 +1,169 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
-.heroBanner {
+/* ===== MODULE SECTION ===== */
+.moduleSection {
   padding: 4rem 0;
-  text-align: center;
-  position: relative;
+}
+
+/* 4 cards in one row */
+.moduleGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* Card */
+.moduleCard {
+  background: rgba(24, 10, 10, 0.97);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.moduleCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 255, 255, 0.15);
+}
+
+/* ===== IMAGE NORMALIZATION ===== */
+.imageWrapper {
+  width: 100%;
+  height: 180px; /* THIS controls uniform size */
   overflow: hidden;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.moduleImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* critical */
+  display: block;
 }
 
-.buttons {
+/* ===== TEXT ===== */
+.cardContent {
+  padding: 1rem;
+}
+
+.cardContent h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardContent p {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+.heroBanner {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top,
+    rgba(0, 255, 255, 0.12),
+    transparent 60%
+  );
+  z-index: 0;
+}
+
+/* Main layout */
+.heroContainer {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* Text section */
+.heroContent {
+  text-align: center;
+}
+
+.heroTitle {
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.heroSubtitle {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  opacity: 0.85;
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+/* CTA Button */
+.ctaButton {
+  margin-top: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+
+  background: linear-gradient(135deg, #101111, #1f686a);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+
+  box-shadow:
+    0 0 20px hsla(182, 100%, 50%, 0.35),
+    inset 0 0 0 rgba(255, 255, 255, 0);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow:
+    0 0 35px rgba(0, 245, 255, 0.7),
+    inset 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.arrow {
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+}
+
+.ctaButton:hover .arrow {
+  transform: translateX(6px);
+}
+
+/* Spline container */
+.splineContainer {
+  width: 100%;
+  height: 420px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Mobile */
+@media (max-width: 996px) {
+  .heroContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .splineContainer {
+    height: 300px;
+    margin-top: 2rem;
+  }
 }

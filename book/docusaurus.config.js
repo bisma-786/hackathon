@@ -10,7 +10,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Physical AI & Humanoid Robotics',
+  title: 'Bisma',
   tagline: 'An AI-Driven Textbook on Embodied Intelligence',
   favicon: 'img/favicon.ico',
 
@@ -83,10 +83,14 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'Physical AI Textbook',
+        title: 'Ai Driven Book',
         logo: {
-          alt: 'Physical AI & Humanoid Robotics Logo',
-          src: 'img/logo.svg',
+          alt: '',
+          src: '/img/bbh.png',
+          height:200,
+          
+
+          
         },
         items: [
           {
@@ -95,59 +99,54 @@ const config = {
             position: 'left',
             label: 'Textbook',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/bisma-786',
             label: 'GitHub',
             position: 'right',
           },
+          {
+            href: 'https://www.facebook.com/RunWithBissu/',
+            label: 'Facebook',
+            position: 'right',
+          },
+{
+  href: 'https://wa.me/923342018716?text=Hello%20I%20would%20like%20to%20get%20in%20touch',
+  label: 'Whatsapp',
+  position: 'right',
+},
         ],
       },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Textbook',
-            items: [
-              {
-                label: 'Module 1: Fundamentals',
-                to: '/docs/module-1',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Textbook. Built with Docusaurus.`,
-      },
+ footer: {
+  style: 'dark',
+  links: [
+    {
+      title: 'Textbook',
+      items: [
+        { label: 'Module 1: Fundamentals', to: '/docs/module-1' },
+        { label: 'Module 2: Digital Twin', to: '/docs/module-2' },
+        { label: 'Module 3: Ai Robot Brain', to: '/docs/module-3' },
+        { label: 'Module 4: Vision Language Action', to: '/docs/module-4' },
+      ],
+    },
+    {
+      title: 'Community',
+      items: [
+        { label: 'Github', href: 'https://github.com/bisma-786' },
+        { label: 'Facebook', href: 'https://www.facebook.com/RunWithBissu/' },
+        { label: 'Whatsapp', href: 'https://wa.me/923342018716' },
+      ],
+    },
+    {
+      title: 'More',
+      items: [
+        { label: 'Blog (Coming Soon!)', href: '#' }
+      ],
+    },
+  ],
+  copyright: 'Copyright © BuiltByHer 2025 Physical AI & Humanoid Robotics Textbook.',
+},
+
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
