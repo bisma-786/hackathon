@@ -7,80 +7,38 @@
 
 ## Summary
 
-Module 4 of the Physical AI & Humanoid Robotics textbook focuses on Vision-Language-Action (VLA) systems, exploring how Large Language Models and robotics converge to enable natural language-driven robot behavior. The module follows a clear progression from voice recognition to cognitive planning to autonomous integration, specifically addressing how humanoid robots can respond to natural language commands. It consists of three chapters: (1) Voice-to-Action using OpenAI Whisper for speech recognition, (2) Cognitive Planning with LLMs for translating language into ROS 2 action graphs, and (3) Capstone Autonomous Humanoid demonstrating end-to-end VLA pipeline integration. The content emphasizes conceptual understanding over implementation details, with a focus on how vision, language, and action integrate in embodied AI systems. The module is designed for advanced students with prior knowledge of ROS 2, simulation, and LLM concepts and follows Docusaurus-compatible Markdown structure for educational delivery.
+[Extract from feature spec: primary requirement + technical approach from research]
 
 ## Technical Context
 
-**Language/Version**: Markdown (.md) format for Docusaurus documentation
-**Primary Dependencies**: OpenAI Whisper, Large Language Models (LLMs), ROS 2 ecosystem, VLA research frameworks
-**Storage**: File-based Markdown content stored in repository
-**Testing**: Conceptual accuracy verification against primary sources, learning outcome validation
-**Target Platform**: Docusaurus-based web documentation, cross-platform accessibility
-**Project Type**: Documentation - textbook module structure
-**Performance Goals**: Fast-loading educational content, accessible to advanced students
-**Constraints**: No implementation code, conceptual focus only, APA citation compliance, Docusaurus compatibility
-**Scale/Scope**: Module 4 with 3 chapters (4.1-4.3), focused on Vision-Language-Action integration in humanoid robotics
+<!--
+  ACTION REQUIRED: Replace the content in this section with the technical details
+  for the project. The structure here is presented in advisory capacity to guide
+  the iteration process.
+-->
+
+**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
+**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
+**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
+**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
+**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
+**Project Type**: [single/web/mobile - determines source structure]  
+**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
+**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
+**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-### Compliance Verification
-
-**Technical Accuracy and Industry Standards**:
-- Content must be verified against VLA research literature, LLM robotics papers, and speech recognition documentation
-- PASS: Research approach includes primary sources as required
-
-**Clarity for Engineering and AI Practitioners**:
-- Content must break down complex concepts with clear explanations and examples
-- PASS: Educational focus on advanced students with prior ROS 2 and LLM knowledge
-
-**Systems Thinking Approach**:
-- Content must emphasize integration of vision, language, and action as a whole system
-- PASS: Architecture connects Human Voice → Whisper → LLM Planner → ROS 2 Action Graph → Perception → Navigation → Manipulation
-
-**Reproducibility and Traceability**:
-- All claims must be traceable to sources with proper APA citations
-- PASS: Research approach includes citation requirements
-
-**Progressive Learning from Simulation to Reality**:
-- Content must follow clear progression from speech recognition to planning to integration
-- PASS: Clear progression specified: Voice → Plan → Action
-
-**Zero Plagiarism Tolerance**:
-- All content must be original with proper attribution
-- PASS: Constitution requires original work with proper citations
-
-**Markdown-Only Source Format**:
-- All content in Markdown format only
-- PASS: Constraint explicitly specified in requirements
-
-**No Copy-Paste from External Repositories**:
-- Original work required, no direct copying
-- PASS: Constitution emphasizes original explanations
-
-**Focus on Explanation Over Implementation**:
-- Conceptual explanation prioritized over implementation code
-- PASS: Constraint explicitly specified in requirements
-
-**Modular and Extensible Structure**:
-- Designed as modular system for future additions
-- PASS: Module 4 structure is self-contained but part of larger textbook
-
-**Docusaurus Documentation Standards**:
-- Content structured for Docusaurus framework
-- PASS: Constraint explicitly specified in requirements
-
-**Cohesive Narrative Arc**:
-- Must maintain logical flow from fundamentals to advanced topics
-- PASS: Architecture connects speech recognition → cognitive planning → autonomous humanoid integration
+[Gates determined based on constitution file]
 
 ## Project Structure
 
 ### Documentation (this feature)
 
 ```text
-specs/2-vla-textbook/
+specs/[###-feature]/
 ├── plan.md              # This file (/sp.plan command output)
 ├── research.md          # Phase 0 output (/sp.plan command)
 ├── data-model.md        # Phase 1 output (/sp.plan command)
@@ -89,26 +47,52 @@ specs/2-vla-textbook/
 └── tasks.md             # Phase 2 output (/sp.tasks command - NOT created by /sp.plan)
 ```
 
-### Textbook Content (repository root)
-Content organized as Docusaurus-compatible Markdown files:
+### Source Code (repository root)
+<!--
+  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
+  for this feature. Delete unused options and expand the chosen structure with
+  real paths (e.g., apps/admin, packages/something). The delivered plan must
+  not include Option labels.
+-->
 
 ```text
-book/
-├── docs/
-│   ├── module-4/
-│   │   ├── index.md                 # Module 4 overview
-│   │   ├── 4.1-voice-to-action.md   # Chapter 4.1: Voice-to-Action using OpenAI Whisper
-│   │   ├── 4.2-cognitive-planning.md # Chapter 4.2: Cognitive Planning with LLMs
-│   │   └── 4.3-autonomous-humanoid.md # Chapter 4.3: Capstone Autonomous Humanoid
-│   └── ...
+# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
+src/
+├── models/
+├── services/
+├── cli/
+└── lib/
+
+tests/
+├── contract/
+├── integration/
+└── unit/
+
+# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
+backend/
 ├── src/
-│   └── components/
-├── static/
-│   └── img/
-└── docusaurus.config.js
+│   ├── models/
+│   ├── services/
+│   └── api/
+└── tests/
+
+frontend/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   └── services/
+└── tests/
+
+# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
+api/
+└── [same as backend above]
+
+ios/ or android/
+└── [platform-specific structure: feature modules, UI flows, platform tests]
 ```
 
-**Structure Decision**: Single documentation structure for textbook module focused on Vision-Language-Action systems. Content follows hierarchical organization from voice recognition to cognitive planning to autonomous humanoid integration, with each chapter as a separate Markdown file compatible with Docusaurus sidebar navigation.
+**Structure Decision**: [Document the selected structure and reference the real
+directories captured above]
 
 ## Complexity Tracking
 
@@ -116,4 +100,5 @@ book/
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
 |-----------|------------|-------------------------------------|
-| None      | None       | All constitution checks passed      |
+| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
+| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |

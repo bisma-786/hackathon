@@ -1,18 +1,32 @@
 <!--
 Sync Impact Report:
-- Version change: N/A → 1.0.0 (initial constitution)
-- Modified principles: All principles added for first time
-- Added sections: All sections added for first time
+- Version change: 1.0.0 → 1.1.0 (minor version bump for new phase-specific guidance)
+- Modified principles: Focus on Explanation Over Implementation updated with override rule
+- Added sections: Multi-phase structure (Phase 1, Phase 2, Phase 3), Override Rule
 - Removed sections: None
-- Templates requiring updates:
-  - .specify/templates/plan-template.md ✅ updated
-  - .specify/templates/spec-template.md ✅ updated
-  - .specify/templates/tasks-template.md ✅ updated
-  - .specify/templates/commands/*.md ✅ updated
+- Templates requiring updates: None needed as the core principles remain compatible
 - Follow-up TODOs: None
 -->
-
 # Physical AI & Humanoid Robotics — AI-Driven Textbook Constitution
+
+## Multi-Phase Project Structure
+
+This project operates in multiple phases with different objectives and implementation requirements:
+
+### Phase 1: AI-Driven Textbook Authoring
+- Primary goal: conceptual clarity, pedagogy, and explanation
+- Prefer explanation over implementation
+- Markdown-first content
+
+### Phase 2: RAG Backend & Retrieval System
+- Full backend implementation is REQUIRED
+- Real vector databases (Qdrant), embeddings, ingestion pipelines, and retrieval APIs are permitted
+- Production-quality Python code is allowed
+- Data persistence, verification, and querying are mandatory
+- Explanation-only constraints DO NOT apply to backend pipeline code
+
+### Phase 3: Agent & Frontend Integration
+- Emphasis on correctness, UX, and system integration
 
 ## Core Principles
 
@@ -42,8 +56,10 @@ All content must be authored in Markdown format only, with no PDFs, Jupyter note
 ### No Copy-Paste from External Repositories
 No content may be directly copied from instructor materials, reference repositories, or other textbooks. All content must be original work that demonstrates deep understanding of the subject matter. External concepts must be paraphrased and synthesized into original explanations that serve the specific pedagogical goals of this textbook.
 
-### Focus on Explanation Over Implementation
+### Focus on Explanation Over Implementation (Phase 1 Constraint)
 Content should prioritize conceptual explanation and system architecture understanding over detailed implementation code. While architectural diagrams and pseudocode may be appropriate, actual implementation code should be avoided unless explicitly required for advanced topics. The emphasis should be on how systems work rather than how to program them.
+
+**Override Rule**: When a spec explicitly targets backend systems, data pipelines, or infrastructure (Phase 2), implementation is allowed and required, even if earlier principles preferred explanation.
 
 ### Modular and Extensible Structure
 The textbook must be designed as a modular, extensible system that can accommodate future additions and updates. Each chapter should be self-contained while contributing to the overall narrative arc from ROS 2 fundamentals to autonomous humanoid systems. This modularity enables flexible course structures and supports ongoing development.
@@ -63,4 +79,4 @@ All chapters must undergo peer review by experts in AI, robotics, and embodied i
 
 This constitution serves as the governing document for all aspects of the Physical AI & Humanoid Robotics textbook project. All contributors must comply with these principles, and any deviations require explicit approval through formal amendment procedures. All pull requests and reviews must verify compliance with these principles before merging. The constitution supersedes any conflicting practices or guidelines.
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-17 | **Last Amended**: 2025-12-17
+**Version**: 1.1.0 | **Ratified**: 2025-12-17 | **Last Amended**: 2025-12-21

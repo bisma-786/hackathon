@@ -1,0 +1,186 @@
+openapi: 3.0.0
+info:
+  title: Environment Variable Constraint API
+  description: API contract for validating environment variable usage in frontend code
+  version: 1.0.0
+
+paths:
+  /validate/environment:
+    post:
+      summary: Validate environment variable usage in frontend code
+      description: Validates that frontend code follows proper environment variable injection patterns
+      operationId: validateEnvironment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvironmentValidationRequest'
+      responses:
+        '200':
+          description: Validation results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentValidationResponse'
+        '400':
+          description: Invalid request format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /check/node-globals:
+    post:
+      summary: Check for Node.js global usage in frontend code
+      description: Checks frontend code for inappropriate usage of Node.js globals
+      operationId: checkNodeGlobals
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeGlobalsCheckRequest'
+      responses:
+        '200':
+          description: Node.js globals check results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeGlobalsCheckResponse'
+        '400':
+          description: Invalid request format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    EnvironmentValidationRequest:
+      type: object
+      required:
+        - codeFiles
+        - environmentVariables
+      properties:
+        codeFiles:
+          type: array
+          description: Array of frontend code files to validate
+          items:
+            type: string
+          example: ["Chatbot.jsx", "chatbot-api.js"]
+        environmentVariables:
+          type: array
+          description: Expected environment variables
+          items:
+            type: string
+          example: ["CHATBOT_API_ENDPOINT", "CHATBOT_TIMEOUT_MS"]
+
+    EnvironmentValidationResponse:
+      type: object
+      required:
+        - isValid
+        - results
+      properties:
+        isValid:
+          type: boolean
+          description: Whether all code files pass environment validation
+          example: true
+        results:
+          type: array
+          description: Detailed validation results for each file
+          items:
+            $ref: '#/components/schemas/ValidationResult'
+
+    NodeGlobalsCheckRequest:
+      type: object
+      required:
+        - codeFiles
+      properties:
+        codeFiles:
+          type: array
+          description: Array of frontend code files to check
+          items:
+            type: string
+          example: ["Chatbot.jsx", "chatbot-api.js"]
+
+    NodeGlobalsCheckResponse:
+      type: object
+      required:
+        - hasViolations
+        - violations
+      properties:
+        hasViolations:
+          type: boolean
+          description: Whether any Node.js global usage violations were found
+          example: false
+        violations:
+          type: array
+          description: Details of any violations found
+          items:
+            $ref: '#/components/schemas/ViolationDetail'
+
+    ValidationResult:
+      type: object
+      properties:
+        fileName:
+          type: string
+          description: Name of the file being validated
+          example: "Chatbot.jsx"
+        isValid:
+          type: boolean
+          description: Whether the file passed validation
+          example: true
+        errors:
+          type: array
+          description: Validation errors found in the file
+          items:
+            type: string
+          example: ["Environment variable CHATBOT_API_ENDPOINT not properly injected"]
+        warnings:
+          type: array
+          description: Validation warnings in the file
+          items:
+            type: string
+          example: ["Consider using Docusaurus config for environment injection"]
+
+    ViolationDetail:
+      type: object
+      properties:
+        fileName:
+          type: string
+          description: Name of the file containing violation
+          example: "chatbot-api.js"
+        line:
+          type: integer
+          description: Line number where violation occurs
+          example: 42
+        globalName:
+          type: string
+          description: Name of the Node.js global being used inappropriately
+          example: "process"
+        severity:
+          type: string
+          enum: [error, warning]
+          description: Severity of the violation
+          example: "error"
+        message:
+          type: string
+          description: Description of the violation
+          example: "Direct access to process.env is not allowed in frontend code"
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: "Invalid request format"
+        code:
+          type: string
+          description: Error code
+          example: "INVALID_REQUEST"
+        details:
+          type: object
+          description: Additional error details
+          example: {"field": "codeFiles", "reason": "must be non-empty array"}

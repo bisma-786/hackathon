@@ -147,6 +147,15 @@ const config = {
   copyright: 'Copyright © BuiltByHer 2025 Physical AI & Humanoid Robotics Textbook.',
 },
 
+      // Chatbot configuration
+      chatbot: {
+        enabled: true,
+        apiEndpoint: process.env.CHATBOT_API_ENDPOINT || 'http://localhost:8000',
+        showOnDocPages: true,
+        showOnBlogPages: false,
+        showOnNonDocPages: false,
+      },
+
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
