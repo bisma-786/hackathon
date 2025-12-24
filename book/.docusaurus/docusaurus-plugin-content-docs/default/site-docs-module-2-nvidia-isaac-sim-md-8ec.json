@@ -1,0 +1,24 @@
+{
+  "id": "module-2/nvidia-isaac-sim",
+  "title": "NVIDIA Isaac Sim",
+  "description": "Overview",
+  "source": "@site/docs/module-2/nvidia-isaac-sim.md",
+  "sourceDirName": "module-2",
+  "slug": "/module-2/nvidia-isaac-sim",
+  "permalink": "/docs/module-2/nvidia-isaac-sim",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-2/nvidia-isaac-sim.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "textbookSidebar",
+  "previous": {
+    "title": "Module 2 Capstone Exercise: Simulation Validation and Transfer",
+    "permalink": "/docs/module-2/module-2-capstone"
+  },
+  "next": {
+    "title": "placeholder",
+    "permalink": "/docs/module-2/placeholder"
+  }
+}

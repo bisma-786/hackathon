@@ -1,0 +1,27 @@
+{
+  "id": "module-1/module-1-capstone",
+  "title": "Chapter 1.6: Module 1 Capstone Exercise - Building a Simple Physical AI System",
+  "description": "Learning Objectives",
+  "source": "@site/docs/module-1/module-1-capstone.md",
+  "sourceDirName": "module-1",
+  "slug": "/module-1/module-1-capstone",
+  "permalink": "/docs/module-1/module-1-capstone",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-1/module-1-capstone.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "sidebar_position": 7
+  },
+  "sidebar": "textbookSidebar",
+  "previous": {
+    "title": "Chapter 1.5: Embodied Intelligence Concepts",
+    "permalink": "/docs/module-1/embodied-intelligence-concepts"
+  },
+  "next": {
+    "title": "Module 2: The Digital Twin (Gazebo & Unity)",
+    "permalink": "/docs/module-2/"
+  }
+}

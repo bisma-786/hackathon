@@ -1,0 +1,24 @@
+{
+  "id": "module-2/module-2-capstone",
+  "title": "Module 2 Capstone Exercise: Simulation Validation and Transfer",
+  "description": "Overview",
+  "source": "@site/docs/module-2/module-2-capstone.md",
+  "sourceDirName": "module-2",
+  "slug": "/module-2/module-2-capstone",
+  "permalink": "/docs/module-2/module-2-capstone",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-2/module-2-capstone.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "textbookSidebar",
+  "previous": {
+    "title": "Introduction to Simulation Environments",
+    "permalink": "/docs/module-2/introduction-to-simulation-environments"
+  },
+  "next": {
+    "title": "NVIDIA Isaac Sim",
+    "permalink": "/docs/module-2/nvidia-isaac-sim"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "module-4/4.2-cognitive-planning-llm",
+  "title": "Chapter 4.2 - Cognitive Planning with LLMs",
+  "description": "Large Language Models as cognitive planners for translating natural language into ROS 2 action sequences",
+  "source": "@site/docs/module-4/4.2-cognitive-planning-llm.md",
+  "sourceDirName": "module-4",
+  "slug": "/module-4/4.2-cognitive-planning-llm",
+  "permalink": "/docs/module-4/4.2-cognitive-planning-llm",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-4/4.2-cognitive-planning-llm.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Chapter 4.2 - Cognitive Planning with LLMs",
+    "sidebar_position": 2,
+    "description": "Large Language Models as cognitive planners for translating natural language into ROS 2 action sequences"
+  },
+  "sidebar": "textbookSidebar",
+  "previous": {
+    "title": "Chapter 4.1 - Voice-to-Action using OpenAI Whisper",
+    "permalink": "/docs/module-4/4.1-voice-to-action-whisper"
+  },
+  "next": {
+    "title": "Chapter 4.3 - Capstone: Autonomous Humanoid",
+    "permalink": "/docs/module-4/4.3-capstone-autonomous-humanoid"
+  }
+}

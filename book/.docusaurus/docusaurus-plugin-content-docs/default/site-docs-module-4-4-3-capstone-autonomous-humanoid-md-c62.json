@@ -1,0 +1,25 @@
+{
+  "id": "module-4/4.3-capstone-autonomous-humanoid",
+  "title": "Chapter 4.3 - Capstone: Autonomous Humanoid",
+  "description": "End-to-end Vision-Language-Action pipeline integration in a complete autonomous humanoid system",
+  "source": "@site/docs/module-4/4.3-capstone-autonomous-humanoid.md",
+  "sourceDirName": "module-4",
+  "slug": "/module-4/4.3-capstone-autonomous-humanoid",
+  "permalink": "/docs/module-4/4.3-capstone-autonomous-humanoid",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/module-4/4.3-capstone-autonomous-humanoid.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "Chapter 4.3 - Capstone: Autonomous Humanoid",
+    "sidebar_position": 3,
+    "description": "End-to-end Vision-Language-Action pipeline integration in a complete autonomous humanoid system"
+  },
+  "sidebar": "textbookSidebar",
+  "previous": {
+    "title": "Chapter 4.2 - Cognitive Planning with LLMs",
+    "permalink": "/docs/module-4/4.2-cognitive-planning-llm"
+  }
+}
