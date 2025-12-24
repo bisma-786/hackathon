@@ -57,9 +57,10 @@
 
 .moduleGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
 }
+
 .moduleCard {
   background: rgba(10, 10, 20, 0.6);
   border-radius: 16px;
@@ -74,11 +75,18 @@
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 0 40px rgba(0, 255, 255, 0.25);
 }
-.imageWrapper {
-  width: 100%;
-  height: 180px;            /* CARD IMAGE HEIGHT */
-  overflow: hidden;
+@media (max-width: 996px) {
+  .imageWrapper {
+    height: 200px;
+  }
+
+  .moduleImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
+
 .cardContent {
   padding: 1.25rem;
 
@@ -109,12 +117,12 @@
 }
 .splineContainer {
   width: 100%;
-  height: 420px;
+
  
 }
 .splineContainer {
   width: 100%;
-  height: 1000px;        /* increase from 420px */
+       /* increase from 420px */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,6 +131,20 @@
   outline: none;
   border: none;
 }
+.splineContainer {
+  width: 100%;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 996px) {
+  .splineContainer {
+    height: 300px;
+  }
+}
+
 .navbar{background: #000000;}
 /* Navbar text color (default / not hovered) */
 
@@ -145,4 +167,86 @@
 
 .navbar__link:hover {
   color: #1a8870;
+}
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;     /* KEY FIX */
+  overflow: hidden;
+}
+
+.moduleImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* PREVENTS STRETCHING */
+  display: block;
+}
+@media (max-width: 996px) {
+  .moduleGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .moduleCard {
+    max-width: 100%;
+  }
+}
+@media (max-width: 996px) {
+  .footer {
+    padding: 2rem 1rem;
+  }
+
+  .footer__links {
+    gap: 1.5rem;
+  }
+
+  .footer__col {
+    margin-bottom: 1rem;
+  }
+}
+/* FIX: Mobile sidebar text invisible in LIGHT theme */
+@media (max-width: 996px) {
+  html[data-theme='light'] .theme-doc-sidebar-container,
+  html[data-theme='light'] .theme-doc-sidebar-menu,
+  html[data-theme='light'] .menu__link {
+    color: #1c1e21 !important;
+  }
+
+  html[data-theme='light'] .menu__link--active {
+    color: #0969da !important;
+    font-weight: 600;
+  }
+}
+/* Touch feedback for mobile */
+@media (max-width: 996px) {
+  .moduleCard {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .moduleCard:active {
+    transform: scale(0.97);
+    box-shadow: 0 10px 25px rgba(0, 255, 255, 0.2);
+  }
+}
+@media (max-width: 996px) {
+  .heroTitle {
+    margin-top: 1rem;
+  }
+}
+/* ================================
+   FOOTER RESPONSIVENESS FIX
+   Desktop layout between 600–999px
+================================ */
+
+@media (min-width: 600px) and (max-width: 999px) {
+  .footer__links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .footer__col {
+    flex: 1;
+    margin-bottom: 0;
+  }
 }
