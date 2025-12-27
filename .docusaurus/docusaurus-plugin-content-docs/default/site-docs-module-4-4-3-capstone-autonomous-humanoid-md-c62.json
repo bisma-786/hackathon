@@ -21,5 +21,9 @@
   "previous": {
     "title": "Chapter 4.2 - Cognitive Planning with LLMs",
     "permalink": "/docs/module-4/4.2-cognitive-planning-llm"
+  },
+  "next": {
+    "title": "AI Assistant Integration",
+    "permalink": "/docs/chatbot-integration"
   }
 }

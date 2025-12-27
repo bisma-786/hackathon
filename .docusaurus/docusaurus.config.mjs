@@ -28,7 +28,7 @@ export default {
     },
     "experimental_router": "browser"
   },
-  "url": "https://your-docusaurus-site.example.com",
+  "url": "https://ai-driven-robotics-book-two.vercel.app",
   "baseUrl": "/",
   "organizationName": "facebook",
   "projectName": "docusaurus",
@@ -160,13 +160,6 @@ export default {
         }
       ],
       "copyright": "Copyright © BuiltByHer 2025 Physical AI & Humanoid Robotics Textbook."
-    },
-    "chatbot": {
-      "enabled": true,
-      "apiEndpoint": "http://localhost:8000",
-      "showOnDocPages": true,
-      "showOnBlogPages": false,
-      "showOnNonDocPages": false
     },
     "prism": {
       "theme": {

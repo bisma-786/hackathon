@@ -108,21 +108,26 @@ export default [
     exact: true
   },
   {
+    path: '/chatbot-demo',
+    component: ComponentCreator('/chatbot-demo', 'f04'),
+    exact: true
+  },
+  {
     path: '/markdown-page',
     component: ComponentCreator('/markdown-page', '3d7'),
     exact: true
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '348'),
+    component: ComponentCreator('/docs', '063'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', '219'),
+        component: ComponentCreator('/docs', 'a5b'),
         routes: [
           {
             path: '/docs',
-            component: ComponentCreator('/docs', '8cd'),
+            component: ComponentCreator('/docs', '593'),
             routes: [
               {
                 path: '/docs/category/tutorial---basics',
@@ -135,6 +140,12 @@ export default [
                 component: ComponentCreator('/docs/category/tutorial---extras', '9ad'),
                 exact: true,
                 sidebar: "tutorialSidebar"
+              },
+              {
+                path: '/docs/chatbot-integration',
+                component: ComponentCreator('/docs/chatbot-integration', 'e0a'),
+                exact: true,
+                sidebar: "textbookSidebar"
               },
               {
                 path: '/docs/intro',

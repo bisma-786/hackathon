@@ -20,7 +20,7 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://ai-driven-robotics-book-two.vercel.app/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -147,14 +147,6 @@ const config = {
   copyright: 'Copyright © BuiltByHer 2025 Physical AI & Humanoid Robotics Textbook.',
 },
 
-      // Chatbot configuration
-      chatbot: {
-        enabled: true,
-        apiEndpoint: process.env.CHATBOT_API_ENDPOINT || 'http://localhost:8000',
-        showOnDocPages: true,
-        showOnBlogPages: false,
-        showOnNonDocPages: false,
-      },
 
       prism: {
         theme: prismThemes.github,
