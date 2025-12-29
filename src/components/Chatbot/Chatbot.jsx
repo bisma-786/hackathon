@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { API_BASE_URL } from '../../config';
 import './Chatbot.css';
 
 const Chatbot = () => {
@@ -7,8 +8,6 @@ const Chatbot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [sessionId, setSessionId] = useState(null);
   const messagesEndRef = useRef(null);
-
-  const API_BASE_URL = 'http://localhost:8000';
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -51,10 +50,9 @@ const Chatbot = () => {
       }
 
       const botMessage = {
-        text: data.response || 'Sorry, I could not understand your question.',
+        text: data.answer || 'Sorry, I could not understand your question.',
         sender: 'bot',
         timestamp: new Date(),
-        sources: data.source_chunks || [],
       };
 
       setMessages([...newMessages, botMessage]);
@@ -78,24 +76,6 @@ const Chatbot = () => {
     }
   };
 
-  const formatSources = (sources) => {
-    if (!sources || sources.length === 0) return null;
-
-    return (
-      <div className="chatbot-sources">
-        <strong>Sources:</strong>
-        <ul>
-          {sources.slice(0, 3).map((source, index) => (
-            <li key={index}>
-              <a href={source.metadata?.url} target="_blank" rel="noopener noreferrer">
-                {source.metadata?.title || `Source ${index + 1}`}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  };
 
   return (
     <div className="chatbot-container">
@@ -117,7 +97,6 @@ const Chatbot = () => {
             >
               <div className="message-content">
                 {message.text}
-                {message.sources && formatSources(message.sources)}
               </div>
               <div className="message-timestamp">
                 {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
