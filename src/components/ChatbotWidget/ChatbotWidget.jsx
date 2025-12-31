@@ -47,7 +47,7 @@ const ChatbotWidget = ({ position = 'bottom-right', size = 'medium' }) => {
           position: 'fixed',
           ...getPositionStyles(),
           zIndex: 1000,
-          backgroundColor: '#4f6fef',
+          backgroundColor: 'transparent',
           color: 'white',
           border: 'none',
           borderRadius: '50%',
@@ -60,10 +60,28 @@ const ChatbotWidget = ({ position = 'bottom-right', size = 'medium' }) => {
           alignItems: 'center',
           justifyContent: 'center',
           fontWeight: 'bold',
+          transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+          padding: '5px',
+        }}
+        onMouseEnter={(e) => {
+          e.target.style.transform = 'scale(1.1)';
+          e.target.style.boxShadow = '0 6px 16px rgba(0, 0, 0, 0.2)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.transform = 'scale(1)';
+          e.target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
         }}
         aria-label="Open AI Assistant"
       >
-        💬
+        <img
+          src="/img/cuterobo.jpg.png"
+          alt="AI Assistant"
+          style={{
+            width: '45px',
+            height: '45px',
+            objectFit: 'cover',
+          }}
+        />
       </button>
     );
   }
@@ -82,38 +100,8 @@ const ChatbotWidget = ({ position = 'bottom-right', size = 'medium' }) => {
         backgroundColor: 'white',
       }}
     >
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: '0.75rem',
-          backgroundColor: '#4f6fef',
-          color: 'white',
-        }}
-      >
-        <h3 style={{ margin: 0, fontSize: '1rem' }}>AI Assistant</h3>
-        <button
-          onClick={() => setIsOpen(false)}
-          style={{
-            background: 'none',
-            border: 'none',
-            color: 'white',
-            fontSize: '1.5rem',
-            cursor: 'pointer',
-            padding: '0',
-            width: '30px',
-            height: '30px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          ×
-        </button>
-      </div>
-      <div style={{ height: `calc(${getSizeStyles().height} - 50px)`, overflow: 'auto' }}>
-        <Chatbot />
+      <div style={{ height: '100%', overflow: 'auto' }}>
+        <Chatbot onClose={() => setIsOpen(false)} />
       </div>
     </div>
   );

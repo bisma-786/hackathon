@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { API_BASE_URL } from '../../config';
 import './Chatbot.css';
 
-const Chatbot = () => {
+const Chatbot = ({ onClose }) => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -80,8 +80,32 @@ const Chatbot = () => {
   return (
     <div className="chatbot-container">
       <div className="chatbot-header">
-        <h3>AI Assistant</h3>
-        <p>Ask me anything about the book content!</p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+          <div>
+            <h3>AI Assistant</h3>
+            <p>Ask me anything about the book content!</p>
+          </div>
+          <button
+            onClick={onClose}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: 'white',
+              fontSize: '1.5rem',
+              cursor: 'pointer',
+              padding: '0',
+              width: '30px',
+              height: '30px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: '50%',
+              backgroundColor: 'rgba(255, 255, 255, 0.2)',
+            }}
+          >
+            ×
+          </button>
+        </div>
       </div>
 
       <div className="chatbot-messages">
