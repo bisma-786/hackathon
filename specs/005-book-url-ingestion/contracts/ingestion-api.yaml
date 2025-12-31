@@ -1,0 +1,143 @@
+# API Contract: Book URL Ingestion Pipeline
+
+## Overview
+This document defines the internal API contracts for the Book URL Ingestion & Vector Indexing pipeline. Since this is a backend ingestion pipeline, the primary interface is the command-line entry point and internal module interfaces.
+
+## Main Pipeline Interface
+
+### Entry Point: main.py
+```python
+def main(
+    base_url: str = None,
+    collection_name: str = "book_content_chunks",
+    chunk_size: int = 1000,
+    chunk_overlap: int = 200,
+    rebuild: bool = False,
+    batch_size: int = 10,
+    log_level: str = "INFO"
+) -> bool
+```
+
+**Description**: Main entry point for the ingestion pipeline
+
+**Parameters**:
+- `base_url`: Base URL of the book site (optional, defaults to env var)
+- `collection_name`: Qdrant collection name (optional, defaults to env var)
+- `chunk_size`: Size of text chunks in tokens (default: 1000)
+- `chunk_overlap`: Overlap between chunks in tokens (default: 200)
+- `rebuild`: Whether to rebuild the entire index (default: False)
+- `batch_size`: Size of batches for embedding generation (default: 10)
+- `log_level`: Logging level (default: "INFO")
+
+**Returns**: True if pipeline completed successfully, False otherwise
+
+**Errors**:
+- `ConfigurationError`: Invalid configuration parameters
+- `ConnectionError`: Cannot connect to external services (Cohere, Qdrant)
+
+## Internal Module APIs
+
+### Ingestion Module: src/ingestion/crawler.py
+
+```python
+def discover_book_urls(base_url: str) -> List[str]
+```
+**Description**: Discover all book page URLs from the base URL
+**Returns**: List of discovered URLs
+
+```python
+def fetch_page_content(url: str) -> str
+```
+**Description**: Fetch and return the HTML content of a single page
+**Returns**: HTML content as string
+
+### Content Parser: src/ingestion/parser.py
+
+```python
+def extract_readable_content(html: str, url: str) -> dict
+```
+**Description**: Extract readable content from HTML with metadata
+**Returns**: Dictionary with keys: text, headings, title, module, section
+
+### Chunker: src/ingestion/chunker.py
+
+```python
+def chunk_text_with_overlap(text: str, chunk_size: int, overlap: int) -> List[dict]
+```
+**Description**: Split text into overlapping chunks
+**Returns**: List of chunk dictionaries with text and metadata
+
+### Embedding Generator: src/embedding/generator.py
+
+```python
+def generate_embeddings(texts: List[str]) -> List[List[float]]
+```
+**Description**: Generate embeddings for a list of texts
+**Returns**: List of embedding vectors
+
+### Vector Storage: src/storage/vector_store.py
+
+```python
+def upsert_chunks(chunks: List[dict]) -> int
+```
+**Description**: Insert or update content chunks in vector store
+**Returns**: Number of chunks successfully stored
+
+```python
+def search_similar(query: str, limit: int = 5) -> List[dict]
+```
+**Description**: Search for similar content chunks
+**Returns**: List of similar chunks with metadata
+
+## Configuration Contract
+
+### Environment Variables
+The pipeline expects the following environment variables:
+
+- `COHERE_API_KEY`: API key for Cohere embedding service
+- `QDRANT_URL`: URL for Qdrant Cloud cluster
+- `QDRANT_API_KEY`: API key for Qdrant Cloud (optional if cluster is public)
+- `BOOK_BASE_URL`: Base URL of the book site (if not provided as parameter)
+
+### Configuration File (Optional)
+The pipeline can also accept a YAML configuration file:
+
+```yaml
+# config.yaml
+base_url: "https://book.example.com"
+collection_name: "book_content_chunks"
+chunk_size: 1000
+chunk_overlap: 200
+batch_size: 10
+rebuild: false
+qdrant:
+  url: "https://your-cluster.qdrant.tech:6333"
+  api_key: "your-api-key"
+cohere:
+  api_key: "your-cohere-api-key"
+```
+
+## Error Handling Contract
+
+### Standard Error Response Format
+```json
+{
+  "error": {
+    "type": "ErrorType",
+    "message": "Human-readable error message",
+    "timestamp": "ISO 8601 timestamp",
+    "details": {
+      "url": "relevant URL if applicable",
+      "status_code": 404,
+      "attempt": 1
+    }
+  }
+}
+```
+
+### Expected Error Types
+- `ConfigurationError`: Invalid configuration
+- `ConnectionError`: Network connection issues
+- `RateLimitError`: API rate limit exceeded
+- `ValidationError`: Invalid data format
+- `StorageError`: Issues with vector storage

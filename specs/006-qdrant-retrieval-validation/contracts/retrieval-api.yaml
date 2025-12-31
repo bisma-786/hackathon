@@ -1,0 +1,57 @@
+# API Contract: Qdrant Retrieval Service
+
+## Overview
+This document defines the contract for the Qdrant retrieval functionality that performs semantic similarity searches on stored book embeddings.
+
+## Endpoints
+
+Since this is a script-based implementation, the "endpoints" are conceptual interfaces:
+
+### Search Interface
+**Function**: `search_qdrant(query_text, top_k=5)`
+**Description**: Performs semantic similarity search on Qdrant collection
+
+#### Input Parameters
+- `query_text`: string (required) - The text query to search for
+- `top_k`: integer (optional, default=5) - Number of top results to return
+
+#### Output Structure
+```json
+{
+  "query": {
+    "text": "string",
+    "embedding_generated": "boolean"
+  },
+  "results": [
+    {
+      "text_chunk": "string",
+      "metadata": {
+        "source_url": "string",
+        "module": "string",
+        "section": "string",
+        "chunk_id": "string"
+      },
+      "similarity_score": "number",
+      "rank": "integer"
+    }
+  ],
+  "search_stats": {
+    "execution_time_ms": "number",
+    "total_candidates": "integer",
+    "retrieved_count": "integer"
+  }
+}
+```
+
+#### Error Responses
+- `ConnectionError`: When unable to connect to Qdrant Cloud
+- `AuthenticationError`: When QDRANT_API_KEY is invalid
+- `CollectionNotFoundError`: When specified collection doesn't exist
+- `EmbeddingError`: When unable to generate embeddings for the query
+
+## Validation Requirements
+1. All retrieved text chunks must have valid metadata
+2. Source URLs must be properly formatted
+3. Similarity scores must be between 0 and 1
+4. Response time must be measured and reported
+5. Top-K parameter must limit results appropriately

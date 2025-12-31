@@ -1,0 +1,151 @@
+openapi: 3.0.0
+info:
+  title: RAG Chatbot API
+  description: API for integrating RAG chatbot with Docusaurus frontend
+  version: 1.0.0
+paths:
+  /query:
+    post:
+      summary: Process a user query through the RAG agent
+      description: Accepts a user query and returns a response based on book content
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+      responses:
+        '200':
+          description: Successful response from the RAG agent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResponse'
+        '400':
+          description: Bad request - invalid query format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    QueryRequest:
+      type: object
+      properties:
+        query:
+          type: string
+          description: The user's question
+          example: "What is ROS 2 and how does it work?"
+        session_id:
+          type: string
+          description: Optional session identifier for conversation context
+          example: "123e4567-e89b-12d3-a456-426614174000"
+      required:
+        - query
+    QueryResponse:
+      type: object
+      properties:
+        response:
+          type: string
+          description: The agent's answer to the query
+          example: "ROS 2 is a flexible framework for robotics development..."
+        session_id:
+          type: string
+          description: Session identifier (newly created or existing)
+          example: "123e4567-e89b-12d3-a456-426614174000"
+        source_chunks:
+          type: array
+          items:
+            $ref: '#/components/schemas/SourceChunk'
+        content_quality:
+          $ref: '#/components/schemas/ContentQuality'
+        query_time:
+          type: number
+          description: Unix timestamp of query processing time
+          example: 1703123456.789
+      required:
+        - response
+        - session_id
+        - source_chunks
+        - content_quality
+        - query_time
+    SourceChunk:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the content chunk
+          example: "chunk_123"
+        content:
+          type: string
+          description: The text content of the chunk
+          example: "ROS 2 (Robot Operating System 2) is a flexible framework for writing robot applications..."
+        score:
+          type: number
+          description: Relevance score between 0 and 1
+          example: 0.85
+          minimum: 0
+          maximum: 1
+      required:
+        - id
+        - content
+        - score
+    ContentQuality:
+      type: object
+      properties:
+        total_chunks:
+          type: number
+          description: Total number of chunks retrieved
+          example: 5
+        valid_chunks:
+          type: number
+          description: Number of chunks with acceptable scores
+          example: 3
+        low_score_chunks:
+          type: number
+          description: Number of chunks with low scores
+          example: 2
+        min_score_threshold:
+          type: number
+          description: Minimum score threshold used
+          example: 0.1
+        has_valid_content:
+          type: boolean
+          description: Whether any valid content was found
+          example: true
+        all_chunks_low_score:
+          type: boolean
+          description: Whether all chunks had low scores
+          example: false
+        average_score:
+          type: number
+          description: Average score of all chunks
+          example: 0.72
+      required:
+        - total_chunks
+        - valid_chunks
+        - low_score_chunks
+        - min_score_threshold
+        - has_valid_content
+        - all_chunks_low_score
+        - average_score
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: "Query cannot be empty"
+        status_code:
+          type: number
+          description: HTTP status code
+          example: 400
+      required:
+        - error
+        - status_code

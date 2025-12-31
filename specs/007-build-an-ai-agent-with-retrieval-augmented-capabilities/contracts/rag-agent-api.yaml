@@ -1,0 +1,53 @@
+# API Contract: RAG Agent Service
+
+## Overview
+This contract defines the interface for the RAG (Retrieval-Augmented Generation) agent that answers questions based on book content retrieved from Qdrant.
+
+## Endpoints
+
+### POST /query
+Submit a question to the RAG agent for processing.
+
+**Request**:
+```json
+{
+  "query": "string (the question to answer)",
+  "session_id": "string (optional, for maintaining conversation context)",
+  "top_k": "integer (optional, number of chunks to retrieve, default: 5)"
+}
+```
+
+**Response**:
+```json
+{
+  "response": "string (the agent's answer)",
+  "session_id": "string (session identifier for follow-up queries)",
+  "source_chunks": [
+    {
+      "id": "string (chunk identifier)",
+      "content": "string (the retrieved content)",
+      "score": "float (relevance score)"
+    }
+  ],
+  "query_time": "float (time taken in seconds)"
+}
+```
+
+**Errors**:
+- 400: Invalid request format
+- 429: Rate limit exceeded
+- 500: Internal server error (e.g., Qdrant unavailable)
+
+## GET /health
+Check the health status of the agent service.
+
+**Response**:
+```json
+{
+  "status": "string (ok or error)",
+  "dependencies": {
+    "openai": "boolean (API accessibility)",
+    "qdrant": "boolean (database connectivity)"
+  }
+}
+```
