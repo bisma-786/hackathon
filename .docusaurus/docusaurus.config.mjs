@@ -70,17 +70,6 @@ export default {
     ]
   ],
   "themeConfig": {
-    "devServer": {
-      "proxy": {
-        "/query": {
-          "target": "http://localhost:8000",
-          "changeOrigin": true,
-          "pathRewrite": {
-            "^/query": "/query"
-          }
-        }
-      }
-    },
     "image": "img/docusaurus-social-card.jpg",
     "colorMode": {
       "respectPrefersColorScheme": true,
